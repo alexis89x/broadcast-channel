@@ -1,4 +1,17 @@
 {
-  "name": "broadcast-channel-polyfill",
-  "version": "0.0.1"
+  "name": "@alexis89x/broadcast-channel",
+  "version": "0.0.1",
+  "description": "A polyfill for the Broadcast Channel API, enabling communication across tabs.",
+  "license": "MIT",
+  "repository": "alexis89x/broadcast-channel",
+  "main": "index.js",
+  "keywords": [
+    "broadcast",
+    "broadcastchannel",
+    "localstorage",
+    "npm",
+    "package",
+    "alexis89x",
+    "subcinode"
+  ]
 }
