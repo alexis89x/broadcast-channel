@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Broadcast Channel Polyfill Example</title>
+</head>
+<body>
+<h1>Page 1</h1>
+<div id="result"></div>
+<script src="../gist/broadcast-channel-es6.js"></script>
+<script>
+  const bc = new BroadcastChannel('test');
+  setInterval(() => {
+    bc.postMessage('Message from the first page: ' + (new Date()).getTime());
+    bc.onmessage = ev => {
+      document.getElementById('result').innerHTML = ev.data;
+    }
+  });
+</script>
+</body>
+</html>

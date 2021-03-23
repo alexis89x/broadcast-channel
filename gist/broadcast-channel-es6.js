@@ -4,7 +4,7 @@
  Please refer to the official MDN documentation of the Broadcast Channel API.
  @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API">Broadcast Channel API on MDN</a>
  @author Alessandro Piana
- @version 0.0.3
+ @version 2.0.0
  */
 
 /*
@@ -27,8 +27,8 @@
   SOFTWARE.
 */
 
+(function(context) {
   // Internal variables
-  const context = window;
   let _channels = null; // List of channels
   let _tabId = null; // Current window browser tab identifier (see IE problem, later)
   const _prefix = 'polyBC_'; // prefix to identify localStorage keys.
@@ -220,4 +220,7 @@
     };
   }
 
-module.exports = context.BroadcastChannel || _BroadcastChannel;
+  // Sets BroadcastChannel, if not available.
+  context.BroadcastChannel = context.BroadcastChannel || _BroadcastChannel;
+
+})(window.top);
