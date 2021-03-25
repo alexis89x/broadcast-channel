@@ -1,0 +1,24 @@
+{
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "safari": "12",
+            "ie": "11"
+          },
+          "loose": true
+        }
+      ]
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-proposal-class-properties",
+            {
+                "loose": true
+            }
+        ]
+    ]
+    
+
+  }
