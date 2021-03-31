@@ -4,7 +4,8 @@
   "description": "A polyfill for the Broadcast Channel API, enabling communication across tabs.",
   "license": "MIT",
   "repository": "alexis89x/broadcast-channel",
-  "main": "index.js",
+  "module": "index.js",
+  "main": "lib/index.js",
   "keywords": [
     "broadcast",
     "broadcastchannel",
@@ -13,5 +14,14 @@
     "package",
     "alexis89x",
     "subcinode"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.12"
+  },
+  "scripts": {
+    "build": "babel index.js --out-dir lib"
+  }
 }
