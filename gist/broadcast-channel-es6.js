@@ -4,7 +4,7 @@
  Please refer to the official MDN documentation of the Broadcast Channel API.
  @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API">Broadcast Channel API on MDN</a>
  @author Alessandro Piana
- @version 0.0.5
+ @version 0.0.6
  */
 
 /*
