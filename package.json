@@ -1,6 +1,6 @@
 {
   "name": "@alexis89x/broadcast-channel",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A polyfill for the Broadcast Channel API, enabling communication across tabs.",
   "license": "MIT",
   "repository": "alexis89x/broadcast-channel",
