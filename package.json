@@ -22,6 +22,7 @@
     "@babel/preset-env": "^7.13.12"
   },
   "scripts": {
-    "build": "babel index.js --out-dir lib"
+    "build": "babel index.js --out-dir lib",
+    "publish": "npm publish --access=public"
   }
 }
