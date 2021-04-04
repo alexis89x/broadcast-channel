@@ -4,7 +4,7 @@
  Please refer to the official MDN documentation of the Broadcast Channel API.
  @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API">Broadcast Channel API on MDN</a>
  @author Alessandro Piana
- @version 2.0.0
+ @version 0.0.5
  */
 
 /*
@@ -98,10 +98,11 @@
 
         const subscribers = _channels[obj.channelId];
         subscribers.forEach(sub => {
-          if (!sub.closed && sub.onmessage) {
-            sub.onmessage(obj.message);
+          if (!sub.closed) {
+            const event = new CustomEvent('message', obj.message);
+            sub.dispatchEvent(event);
           }
-        })
+        });
         // Remove the item for safety.
         context.localStorage.removeItem(key);
       }
@@ -113,7 +114,7 @@
    * @param {String} channelName - the channel name.
    * return {BroadcastChannel}
    */
-  class _BroadcastChannel {
+  class _BroadcastChannel extends EventTarget {
 
     channelId = '';
     channelName = '';
@@ -121,6 +122,8 @@
     closed = false;
 
     constructor(channelName = '') {
+      super();
+
       this.channelName = channelName;
 
       // Check if localStorage is available.
@@ -152,11 +155,6 @@
     }
 
     /**
-     * Empty function to prevent errors when calling onmessage.
-     */
-    onmessage(ev) {};
-
-    /**
      * Sends the message to different channels.
      * @param {Object} data - the data to be sent ( actually, it can be any JS type ).
      */
@@ -175,9 +173,8 @@
       subscribers.forEach(sub => {
         // We don't send the message to ourselves.
         if (sub.closed || sub.name === this.name) return;
-        if (sub.onmessage) {
-          sub.onmessage(msgObj);
-        }
+        const event = new CustomEvent('message', msgObj);
+        sub.dispatchEvent(event);
       });
 
       // CROSS-TAB communication.

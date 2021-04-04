@@ -10,12 +10,13 @@
 <script src="../gist/broadcast-channel-es6.js"></script>
 <script>
   const bc = new BroadcastChannel('test');
-  setInterval(() => {
-    bc.postMessage('Message from the first page: ' + (new Date()).getTime());
-    bc.onmessage = ev => {
-      document.getElementById('result').innerHTML = ev.data;
-    }
+  bc.addEventListener('message', ev => {
+    document.getElementById('result').innerHTML = ev.data;
   });
+  setInterval(() => {
+    bc.postMessage('Message from the second page: ' + (new Date()).getTime());
+  }, 1000);
+
 </script>
 </body>
 </html>
